@@ -57,11 +57,31 @@
     session_start();
     $_SESSION['product'][] = $prod;
     $test = $prod;
-    $_SESSION['test'][] = $test;
-    echo "<pre>";
-    print_r($_SESSION["test"]);
-    echo "</pre>";
+
+    if(isset($_SESSION["product"])){
+        echo '<div class="container-md">';
+        echo '<table class="table">
+        <tr>
+        <th scope="col">Model</th>
+        
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        </tr>';
+
+        for($i = 0;$i <count($_SESSION["product"]);$i++ ){
+    echo '<tr>';
+    echo '<td scope="row">' .$_SESSION["product"][$i]["title"] .'</td>';
+    echo '<td scope="row">' .$_SESSION["product"][$i]["description"] .'</td>';
+    echo '<td scope="row">' .$_SESSION["product"][$i]["price"] .'</td>';
+    echo '</tr>';
+    }
+    echo "</table>";
+    echo "</div>";
+
+      }
      }
+
+     
     
     ?>
 
